@@ -4,36 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <title>Document</title>
+    <title>Reading Tracker</title>
 </head>
 <body>
-    <div class="container">
-        <form class="box">
-            <div class="field">
-                <label class="label">Title</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Lord of the Rings" />
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="label">Author</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="J. R. R. Tolkein" />
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Synopsis</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Synopsis here" rows="5">
-                    </textarea>
-
-                </div>
-
-            </div>
-
-
-            <button class="button is-primary">Add</button>
+    <h1 class="title">Reading Tracker</h1>
+    <div class="box">
+        <h2>Welcome to your reading tracker. Add information about your books as you read them inclusing a synopsis and review</h2>
+        <form action="{{url_for('addtitle')}}" method="get">
+            <button class="button is-primary">Add Title</button>
         </form>
     </div>
 </body>

@@ -6,5 +6,9 @@ app = Flask(__name__)
 def tracker():
     return render_template('tracker.html')
 
+@app.route('/add')
+def addtitle():
+    return render_template('addtitle.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
