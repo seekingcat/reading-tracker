@@ -7,12 +7,18 @@
     <title>Reading Tracker</title>
 </head>
 <body>
-    <h1 class="title">Reading Tracker</h1>
-    <div class="box">
-        <h2>Welcome to your reading tracker. Add information about your books as you read them inclusing a synopsis and review</h2>
-        <form action="{{url_for('addtitle')}}" method="get">
-            <button class="button is-primary">Add Title</button>
-        </form>
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="columns is-three-quarters">
+                <div class="box mt-6">
+                    <h1 class="title mt-4 has-text-centered">Reading Tracker</h1>
+                    <h2>Welcome to your reading tracker. Add information about your books as you read them inclusing a synopsis and review</h2>
+                    <form action="{{url_for('addtitle')}}" method="get">
+                        <button class="button is-primary">Add Title</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

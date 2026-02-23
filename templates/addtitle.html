@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <form class="box">
+        <h1 class="title has-text-centered">Add a Title</h1>
+        <form class="box" action="">
             <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
@@ -27,16 +28,12 @@
                 <div class="control">
                     <textarea class="textarea" placeholder="Synopsis here" rows="5">
                     </textarea>
-
                 </div>
-
             </div>
-
 
             <button class="button is-primary">Add</button>
         </form>
         <form action="{{url_for('tracker')}}">
-
             <button class="button is-primary">Home</button>
         </form>
     </div>

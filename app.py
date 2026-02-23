@@ -10,5 +10,9 @@ def tracker():
 def addtitle():
     return render_template('addtitle.html')
 
+@app.route('/view')
+def viewtitle():
+    return render_template('viewtitle.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
