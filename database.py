@@ -14,19 +14,11 @@ def init_db():
             book_id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             author TEXT NOT NULL,
-            synopsis TEXT,
-            review TEXT
+            status TEXT,
             added_at TEXT NOT NULL
         )  
     ''')
 
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS author (
-            author_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            publisher TEXT,
-            country TEXT
-        )  
-    ''')
 
     conn.commit()
     conn.close()
