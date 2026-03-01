@@ -24,26 +24,26 @@
                     <input class="input" type="text" placeholder="J. R. R. Tolkein" />
                 </div>
             </div>
+            
             <div class="field">
-                <label class="label">Synopsis</label>
+                <label class="label">Status</label>
                 <div class="control">
-                    <textarea class="textarea" placeholder="Synopsis here" rows="5">
-                    </textarea>
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Review</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Review here" rows="5">
-                    </textarea>
+                    <div class="select is-link">
+                        <select>
+                            <option>Select dropdown</option>
+                            <option value = 'to be read'>To be read</option>
+                            <option value = 'currently reading'>Currently reading</option>
+                            <option value = 'read'>Read</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <button class="button is-primary">Add</button>
         </form>
-        <form action="{{url_for('tracker')}}">
+        <a href="{{url_for('tracker')}}">
             <button class="button is-primary">Home</button>
-        </form>
+        </a>
     </div>
 </body>
 </html>

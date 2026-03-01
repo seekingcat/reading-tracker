@@ -19,6 +19,24 @@ def init_db():
         )  
     ''')
 
+    def get_all_books():
+        conn = get_db()
+        cursor = conn.cursor()
+
+        books = cursor.execute('SELECT * FROM book').fetchall()
+
+        result = []
+        for book in books:
+            result.append({
+                'id': book['book_id'],
+                'name': book['title'],
+                'author': book['author'],
+                'status': book['status']
+            })
+
+        conn.close()
+        return result
+
 
     conn.commit()
     conn.close()
