@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 def get_db():
     conn = sqlite3.connect('book.db')
@@ -19,28 +20,43 @@ def init_db():
         )  
     ''')
 
-    def get_all_books():
-        conn = get_db()
-        cursor = conn.cursor()
+    conn.commit()
+    conn.close()
 
-        books = cursor.execute('SELECT * FROM book').fetchall()
 
-        result = []
-        for book in books:
-            result.append({
-                'id': book['book_id'],
-                'name': book['title'],
-                'author': book['author'],
-                'status': book['status']
-            })
+def get_all_books():
+    conn = get_db()
+    cursor = conn.cursor()
 
-        conn.close()
-        return result
+    books = cursor.execute('SELECT * FROM book').fetchall()
 
+    result = []
+    for book in books:
+        result.append({
+            'id': book['book_id'],
+            'name': book['title'],
+            'author': book['author'],
+            'status': book['status']
+        })
+
+    conn.close()
+    return result
+
+
+def add_book(title, author, status):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        'INSERT INTO book (title, author, status) VALUES (?, ?, ?)',
+        (title, author, status, datetime.now().date().isoformat())
+    )
 
     conn.commit()
     conn.close()
 
+
+    
 if __name__ == '__main__':
     init_db()
     print("Database created!")
