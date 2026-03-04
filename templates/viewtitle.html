@@ -10,7 +10,11 @@
 <body>
     <h1>Reading List</h1>
     <ul>
-        
+        {% for book in data.book %}
+            <li>
+                {{ book.title }} {{ book.author}}
+            </li>
+        {% endfor %}
     </ul>
 
     <a href="{{url_for('tracker')}}">
