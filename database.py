@@ -34,7 +34,7 @@ def get_all_books():
     for book in books:
         result.append({
             'id': book['book_id'],
-            'name': book['title'],
+            'title': book['title'],
             'author': book['author'],
             'status': book['status']
         })
@@ -48,13 +48,12 @@ def add_book(title, author, status):
     cursor = conn.cursor()
 
     cursor.execute(
-        'INSERT INTO book (title, author, status) VALUES (?, ?, ?)',
+        'INSERT INTO book (title, author, status, added_at) VALUES (?, ?, ?, ?)',
         (title, author, status, datetime.now().date().isoformat())
     )
 
     conn.commit()
     conn.close()
-
 
     
 if __name__ == '__main__':

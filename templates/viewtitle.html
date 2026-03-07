@@ -10,9 +10,10 @@
 <body>
     <h1>Reading List</h1>
     <ul>
-        {% for book in data.book %}
+        {% for book in result.book %}
             <li>
                 {{ book.title }} {{ book.author}}
+                <a href=""><button>Delete book</button></a>
             </li>
         {% endfor %}
     </ul>
