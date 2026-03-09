@@ -1,0 +1,12 @@
+li {
+    list-style-type: none;
+}
+
+#listing {
+    margin: auto;
+}
+
+a#homebutton {
+    margin-left: 50px;
+    margin-top: 20px;
+}

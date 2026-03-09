@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from database import get_all_books, add_book, init_db
+from database import get_all_books, add_book, init_db, delete_book, get_books_by_status
 init_db()
 
 app = Flask(__name__)
@@ -12,11 +12,18 @@ def tracker():
 def addtitle_page():
     return render_template('addtitle.html')
 
+@app.route('/view/<status>')
+def viewbystatus(status):
+    books = get_books_by_status(status)
+    return render_template('viewtitle.html', books = books, current_status = status)
+
+
+
 @app.route('/view')
 def viewtitle():
     books = get_all_books()
 
-    return render_template('viewtitle.html', books = books)
+    return render_template('viewtitle.html', books = books, current_status = 'all')
 
 
 @app.route('/add', methods=['POST'])
@@ -26,6 +33,11 @@ def addtitle():
     status = request.form.get('status')
 
     add_book(title, author, status)
+    return redirect(url_for('viewtitle'))
+
+@app.route('/delete/<int:book_id>', methods=['POST'])
+def delete_book_route(book_id):
+    delete_book(book_id)
     return redirect(url_for('viewtitle'))
 
 

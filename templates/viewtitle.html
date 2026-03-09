@@ -4,22 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <title>View Title</title>
 </head>
 <body>
-    <h1>Reading List</h1>
-    <ul>
-        {% for book in books %}
-            <li>
-                {{ book.title }} {{ book.author}}
-                <a href=""><button>Delete book</button></a>
-            </li>
-        {% endfor %}
-    </ul>
+    <h1 class="title has-text-centered mt-4">Reading List</h1>
+    <h2 class="subtitle has-text-centered">Filter by status</h2>
+    <div class="column is-three-fifths is-offset-one-fifth">
+        <div class="section">
+            <a href="/view"><button class="button is-primary">All</button></a>
+            <a href="/view/currently_reading"><button class="button is-info">Currently reading</button></a>
+            <a href="/view/to_be_read"><button class="button is-warning">To Be Read</button></a>
+            <a href="/view/read"><button class="button is-danger">Read</button></a>
+        </div>
+        <div class="content is-medium">
+            <ul>
+                {% for book in books %}
+                <li class="box">
+                    <p class="listing"><strong>{{ book.title }}</strong> - <em>{{ book.author}}</em></p>
+                    <form method="POST" action="/delete/{{ book.id }}" style="display: inline;">
+            <button class="button is-warning" type="submit" onclick="return confirm('Delete this book?')">Delete</button>
+        </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{{url_for('tracker')}}" id="homebutton">
+                <button class="button is-primary">Home</button>
+            </a>
+    </div>
 
-    <a href="{{url_for('tracker')}}">
-            <button class="button is-primary">Home</button>
-        </a>
 </body>
 </html>

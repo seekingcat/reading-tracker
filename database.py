@@ -55,6 +55,32 @@ def add_book(title, author, status):
     conn.commit()
     conn.close()
 
+def get_books_by_status(status):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    books = cursor.execute('SELECT * FROM book where status = ?', (status,)).fetchall()
+
+    result = []
+    for book in books:
+        result.append({
+            'id': book['book_id'],
+            'title': book['title'],
+            'author': book['author'],
+            'status': book['status']
+        })
+
+    conn.close()
+    return result
+
+def delete_book(book_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    
+    cursor.execute('DELETE FROM book WHERE book_id = ?', (book_id,))
+    
+    conn.commit()
+    conn.close()
     
 if __name__ == '__main__':
     init_db()
