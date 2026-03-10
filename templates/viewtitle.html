@@ -22,8 +22,10 @@
                 {% for book in books %}
                 <li class="box">
                     <p class="listing"><strong>{{ book.title }}</strong> - <em>{{ book.author}}</em></p>
+
+                    <a href="/edit/{{ book.id }}"><button class="button is-info">Edit</button></a>
                     <form method="POST" action="/delete/{{ book.id }}" style="display: inline;">
-            <button class="button is-warning" type="submit" onclick="return confirm('Delete this book?')">Delete</button>
+            <button class="button is-danger" type="submit" onclick="return confirm('Delete this book?')">Delete</button>
         </form>
                 </li>
                 {% endfor %}
