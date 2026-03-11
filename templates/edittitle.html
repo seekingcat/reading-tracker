@@ -8,6 +8,19 @@
     <title>Edit Title</title>
 </head>
 <body>
-    <h1>Working on it</h1>
+    <h1 class="title mt-4 has-text-centered">Edit: {{ book.title }}</h1>
+    
+    <form method="POST">
+        <label>Status:</label>
+        <select name="status" required>
+            <option value="want_to_read" {% if book.status == 'want_to_read' %}selected{% endif %}>Want to Read</option>
+            <option value="reading" {% if book.status == 'reading' %}selected{% endif %}>Currently Reading</option>
+            <option value="finished" {% if book.status == 'finished' %}selected{% endif %}>Finished</option>
+        </select>
+        
+        <button type="submit">Update</button>
+        <a href="/view"><button type="button">Cancel</button></a>
+    </form>
+    <a href="{{url_for('tracker')}}" id="homebutton"><button class="button is-primary">Home</button></a>
 </body>
 </html>

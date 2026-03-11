@@ -73,6 +73,18 @@ def get_books_by_status(status):
     conn.close()
     return result
 
+def update_book_status(book_id, status):
+    conn = get_db()
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        'UPDATE book SET status = ? WHERE book_id = ?',
+        (status, book_id)
+    )
+    
+    conn.commit()
+    conn.close()
+
 def delete_book(book_id):
     conn = get_db()
     cursor = conn.cursor()

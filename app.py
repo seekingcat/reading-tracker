@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from database import get_all_books, add_book, init_db, delete_book, get_books_by_status
+from database import get_all_books, add_book, init_db, delete_book, get_books_by_status, update_book_status
 init_db()
 
 app = Flask(__name__)
@@ -34,6 +34,23 @@ def addtitle():
 
     add_book(title, author, status)
     return redirect(url_for('viewtitle'))
+
+@app.route('/edit/<int:book_id>', methods=['GET', 'POST'])
+def edit_book_route(book_id):
+    if request.method == 'POST':
+        # Handle the form submission
+        new_status = request.form.get('status')
+        update_book_status(book_id, new_status)
+        return redirect(url_for('viewtitle'))
+    else:
+        # Show the edit form
+        books = get_all_books()
+        book = next((b for b in books if b['id'] == book_id), None)
+        
+        if not book:
+            return "Book not found", 404
+        
+        return render_template('edittitle.html', book=book)
 
 @app.route('/delete/<int:book_id>', methods=['POST'])
 def delete_book_route(book_id):
