@@ -13,9 +13,9 @@
     <form method="POST">
         <label>Status:</label>
         <select name="status" required>
-            <option value="want_to_read" {% if book.status == 'want_to_read' %}selected{% endif %}>Want to Read</option>
-            <option value="reading" {% if book.status == 'reading' %}selected{% endif %}>Currently Reading</option>
-            <option value="finished" {% if book.status == 'finished' %}selected{% endif %}>Finished</option>
+            <option value="to_be_read" {% if book.status == 'to_be_read' %}selected{% endif %}>Want to Read</option>
+            <option value="currently_reading" {% if book.status == 'currently_reading' %}selected{% endif %}>Currently Reading</option>
+            <option value="read" {% if book.status == 'read' %}selected{% endif %}>Finished</option>
         </select>
         
         <button type="submit">Update</button>
